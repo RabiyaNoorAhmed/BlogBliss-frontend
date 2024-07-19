@@ -34,7 +34,7 @@ const Login = () => {
     setError("");
     setIsLoading(true);
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData);
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData, { withCredentials: true });
       const user = await response.data;
       setCurrentUser(user)
       navigate('/')

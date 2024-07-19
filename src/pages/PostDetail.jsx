@@ -17,7 +17,7 @@ const PostDetail = () => {
     const getPost = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/${id}`, { withCredentials: true });
         setPost(response.data);
       } catch (error) {
         setError(error);

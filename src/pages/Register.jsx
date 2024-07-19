@@ -28,7 +28,7 @@ const Register = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, userData);
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, userData, { withCredentials: true });
       const newUser = await response.data;
       if (!newUser) {
         setError("Couldn't Register User. Please Try Again.")

@@ -11,7 +11,7 @@ const Posts = () => {
         const fetchPosts = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts`);
+                const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts`, { withCredentials: true });
                 setPosts(response?.data);
             } catch (err) {
                 console.log(err);

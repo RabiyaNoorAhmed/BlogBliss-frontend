@@ -13,7 +13,7 @@ const AuthorPost = () => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/users/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/users/${id}`, { withCredentials: true });
         setPosts(response?.data)
       } catch (err) {
         console.log(err);

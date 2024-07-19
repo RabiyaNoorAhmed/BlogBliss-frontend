@@ -16,7 +16,7 @@ const Authors = () => {
     const getAuthors = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/users`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/users`, { withCredentials: true });
         setAuthors(response.data)
       } catch (error) {
         console.log(error);

@@ -13,7 +13,7 @@ const CategoryPosts = () => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/categories/${category}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/categories/${category}`, { withCredentials: true });
         setPosts(response?.data)
       } catch (err) {
         console.log(err);
