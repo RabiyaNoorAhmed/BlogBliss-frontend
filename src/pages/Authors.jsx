@@ -41,8 +41,8 @@ const Authors = () => {
           authors.map(({ _id: id, avatar, name, posts }) => {
             return <Link key={id} to={`/posts/users/${id}`} className='author'>
               <div className='author__avatar'>
-                <img
-                  src={avatar ? `${import.meta.env.VITE_ASSETS_URL}/uploads/${avatar}` : defaultAvatar}
+              <img
+                  src={avatar ? avatar : defaultAvatar}
                   alt={`Image of ${name}`}
                 />
 

@@ -10,7 +10,6 @@ const Logout = () => {
   navigate('/login')
   return (
     <>
-
     </>
   )
 }

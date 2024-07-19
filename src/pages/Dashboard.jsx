@@ -58,7 +58,7 @@ if(isLoading){
           <article key={post.id} className='dashboard__post'>
             <div className='dashboard__post-info'>
               <div className='dashboard__post-thumbnail'>
-                <img src={`${import.meta.env.VITE_ASSETS_URL}/uploads/${post.thumbnail}`} alt={post.title} />
+              <img src={post.thumbnail} alt={post.title} />
               </div>
               <h5>{post.title}</h5>
             </div>

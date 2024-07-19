@@ -119,7 +119,7 @@ section {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
-    margin-left: 4rem;
+    margin-left: 1.8rem;
 }
 .myposts-btn:hover{
     background: var(--text-primary);
@@ -272,6 +272,7 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
     margin: 2rem;
+    
 }
 
 .post {
@@ -281,6 +282,7 @@ footer {
     padding-bottom: 2rem;
     transition: var(--transition);
     cursor: default;
+    margin-left: 2rem;
 }
 
 .post:hover {
@@ -708,6 +710,13 @@ aspect-ratio: 1/1;
     }
     .dashboard__post-thumbnail{
         width:5rem ;
+    }
+    select{
+        width: 50%;
+        padding: 0.6rem 0.4rem;
+        border-radius: var(--radius-1);
+        resize: none;
+        font-size: 0.9rem;
     }
 }
 

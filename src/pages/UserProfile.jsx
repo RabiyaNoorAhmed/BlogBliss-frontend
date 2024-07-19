@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { UserContext } from '../context/userContext'
+import UserAvatar from '../assets/images/user.png';
 import axios from 'axios';
 const UserProfile = () => {
   const [avatar, setAvatar] = useState('')
@@ -22,7 +23,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
-
+  const defaultAvatar = UserAvatar;
   //redirect to Login Page for any user who isn't logged In
   useEffect(() => {
     if (!token) {
@@ -39,25 +40,25 @@ const UserProfile = () => {
       const { name, email, avatar } = response.data;
       setName(name);
       setEmail(email);
-      setAvatar(avatar)
+      setAvatar(avatar || defaultAvatar);
     }
     getUser();
   }, [])
 
 
-
   const changeAvatarHandler = async () => {
     setIsAvatarTouched(false);
     try {
-      const postData = new FormData();
-      postData.set('avatar', avatar);
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/change-avatar`, postData,
-        { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
-      setAvatar(response?.data.avatar)
+        const postData = new FormData();
+        postData.set('avatar', avatar);
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/change-avatar`, postData,
+            { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+        setAvatar(response?.data.avatarUrl);
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  }
+}
+
 
 
   const updateUserDetails = async (e) => {
@@ -93,7 +94,8 @@ if(response.status==200){
         <div className='profile__details'>
           <div className='avatar__wrapper'>
             <div className='profile__avatar'>
-              <img src={`${import.meta.env.VITE_ASSETS_URL}/uploads/${avatar}`} />
+              {/* <img src={`${import.meta.env.VITE_ASSETS_URL}/uploads/${avatar}`} /> */}
+              <img src={avatar} alt="User Avatar" />
             </div>
             {/* Form to update Avatar */}
             <form className='avatar__form'>
